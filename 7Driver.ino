@@ -1,30 +1,34 @@
-/* 4 x 7 Segment LED Driver With Decimal
-   Author: Jeff Bednar
-   Date: Saturday, March 30th, 2019
-
-   Out 2  Serial Data   74XX595   SER     P14
-   Out 4  Serial Clock            SRCLK   P11
-   Out 7  Serial Clear            !SRCLR  P10
-   Out 8  Demux A       74XX155   A0      P13
-   Out 12 Demux B                 A1      P3
-   Out 11 Demux EA                !EA     P2
-
-   Display segments shifted into registers:
-
-         QA
-     QF      QB
-         QG
-     QE      QC
-         QD      QH (DP)
-
-   Display bit alignment:
-
-   0bABCDEFGH
-*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Program Name: 7Driver (C)                                                                                               //
+// Author: Jeffrey Bednar                                                                                                  //
+// Copyright (c) Illusion Interactive, 2011 - 2025.                                                                        //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Date: Saturday, March 30th, 2019 
+// Description: 4 x 7 Segment LED Driver With Decimal
+//  
+// Out 2  Serial Data   74XX595   SER     P14
+// Out 4  Serial Clock            SRCLK   P11
+// Out 7  Serial Clear            !SRCLR  P10
+// Out 8  Demux A       74XX155   A0      P13
+// Out 12 Demux B                 A1      P3
+// Out 11 Demux EA                !EA     P2
+//
+// Display segments shifted into registers:
+//
+//       QA
+//   QF      QB
+//       QG
+//   QE      QC
+//       QD      QH (DP)
+//
+// Display bit alignment:
+//
+// 0bABCDEFGH
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define BUZZ_ENABLE 1
 #define BUZZ_DURATION_DEFAULT 35
 #define BUZZ_FREQUENCY_DEFAULT 1000
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const uint8_t PIN_SER = 2;
 const uint8_t PIN_SRCLK = 4;
 const uint8_t PIN_SRCLR = 7;
@@ -62,7 +66,7 @@ const uint16_t SEGMENTS[] = {
   0b00000001, // .
 };
 uint16_t a0 = 0, a1 = 0;
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void setup(void) {
   pinMode(PIN_SER, OUTPUT);
   pinMode(PIN_SRCLK, OUTPUT);
@@ -73,13 +77,13 @@ void setup(void) {
   pinMode(LED_BUILTIN, OUTPUT);
   Serial.begin(9600);
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void _clock(uint8_t pin) {
   digitalWrite(pin, LOW);
   digitalWrite(pin, HIGH);
   digitalWrite(pin, LOW);
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void clearRegisters(void) {
   // Low to high transistion to clear QA -> QH. This will effectively
   // illuminate all segment LED's because the display is common anode.
@@ -88,7 +92,7 @@ void clearRegisters(void) {
   // Clock the clear above.
   _clock(PIN_SRCLK);
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void setDigit(uint8_t digit) {
   switch (digit) {
     case 0: {
@@ -116,20 +120,20 @@ void setDigit(uint8_t digit) {
       }
   }
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void displayEnable(bool enable) {
   if (enable)
     digitalWrite(PIN_EA, LOW); // Inputs accepted.
   else
     digitalWrite(PIN_EA, HIGH); // Inputs ignored.
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void writeOut(uint16_t* data) {
   digitalWrite(PIN_SER, *data & 0x1 ? HIGH : LOW);
   _clock(PIN_SRCLK);
   *data >>= 1;
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 uint16_t getSegmentBits(char digit, bool commonAnode, bool withDecimal) {
   uint16_t segmentBits = 0;
   if (digit >= 'A')
@@ -146,7 +150,7 @@ uint16_t getSegmentBits(char digit, bool commonAnode, bool withDecimal) {
   }
   return segmentBits;
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void displayWrite(const char* literal, bool commonAnode, uint16_t indexDelay, uint16_t shiftDelay) {
   const char* firstOccurence = NULL;
   char copy[6] = { '\0' };
@@ -166,18 +170,18 @@ void displayWrite(const char* literal, bool commonAnode, uint16_t indexDelay, ui
     delay(indexDelay);
   }
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void playTone(uint16_t frequency = BUZZ_FREQUENCY_DEFAULT, uint16_t duration = BUZZ_DURATION_DEFAULT) {
   if (BUZZ_ENABLE) {
     tone(PIN_BUZZ, frequency, duration);
   }
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void readAnalogPins() {
   a0 = analogRead(A0);
   a1 = analogRead(A1);
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void loop(void) {
   playTone();
 
@@ -275,3 +279,4 @@ void loop(void) {
   clearRegisters();
   displayEnable(false);
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
