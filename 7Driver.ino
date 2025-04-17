@@ -187,6 +187,7 @@ void loop(void) {
 
   readAnalogPins();
 
+  // Perform a basic POST to verify segment illumination.
   clearRegisters();
   displayEnable(true);
   setDigit(0);
