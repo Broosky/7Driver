@@ -1,8 +1,6 @@
-# 🔢 7Driver
+# 🛠️ 7Driver
 
 A 4-digit 7-segment LED display driver built on a Saturday years ago, using an ATmega328P Arduino and a couple of spare TTL logic chips (74XX595 and 74XX155). Designed as part of a larger bench ecosystem, this module emphasizes classic hardware logic, multiplexing, and minimal pin usage via serial interfacing.
-
-> 📐 A schematic (KiCad 9) has also been uploaded so I don't forget the circuit. 🙂
 
 ---
 
@@ -10,7 +8,7 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
 
 ---
 
-## 🧩 Key Features
+## 🔹 Key Features
 
 - Displays numbers on a **4-digit 7-segment LED display**
 - Built using:
@@ -24,7 +22,7 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
 
 ---
 
-## 🧠 Design Notes
+## 🔹 Design Notes
 
 - **RCLK (Pin 12)** of the 74LS595 is tied to **SRCLK (Pin 11)**, so outputs update automatically with each bit shifted in — useful for early animation tests.
 
@@ -38,14 +36,14 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
 
 ---
 
-## 🛠 General Usage
+## 🔹 General Usage
 
 - Performs a **Power-On Self-Test (POST)** to verify segment connections and logic IC behavior
 - Best used with a **regulated 5V** supply
 
 ---
 
-## ⚡ Considered Improvements
+## 🔹 Considered Improvements
 
 - Break out **RCLK** from **SRCLK** for controlled output updates
 - Add **individual resistors** per LED segment for more consistent brightness
