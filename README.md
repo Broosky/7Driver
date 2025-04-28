@@ -1,4 +1,4 @@
-# 🛠️ 7Driver
+# 💡 7Driver
 
 A 4-digit 7-segment LED display driver built on a Saturday years ago, using an ATmega328P Arduino and a couple of spare TTL logic chips (74XX595 and 74XX155). Designed as part of a larger bench ecosystem, this module emphasizes classic hardware logic, multiplexing, and minimal pin usage via serial interfacing.
 
