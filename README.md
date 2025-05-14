@@ -48,4 +48,4 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
 - Break out **RCLK** from **SRCLK** for controlled output updates
 - Add **individual resistors** per LED segment for more consistent brightness
 - Extend character support beyond 0–9 and A–F (e.g., letters, symbols)
-- Logic to limit counting to prevent overflow or undefined patterns — so it doesn’t lose its digits ☺️
+- Logic to limit counting to prevent overflow or undefined patterns, so it doesn’t lose its digits ☺️
