@@ -8,6 +8,12 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
 
 ---
 
+## 🔹 V1.0.0
+
+- Tracking versions. Functionally the same.
+
+---
+
 ## 🔹 Key Features
 
 - Displays numbers on a **4-digit 7-segment LED display**
