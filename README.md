@@ -8,7 +8,7 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
 
 ---
 
-## 🔹 V1.0.0
+## 🔹 V1.0.0 / Rev 1
 
 - Tracking versions. Functionally the same.
 
