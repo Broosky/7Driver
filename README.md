@@ -7,7 +7,7 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
 
 ## 🔹 Rev 1 Schematic
 
-![Schematic](Schematic.png)
+![Rev 1](<Schematics/Rev 1.png>)
 
 ## 🔹 V1.0.0 For Rev 1
 
