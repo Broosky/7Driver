@@ -9,27 +9,27 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
 
 ![Rev 1](<Schematics/Rev 1.png>)
 
-## 🔹 V1.0.0 For Rev 1
+## 🔹 V1.0.0 For Rev 1 Schematic
 
-- Tracking versions. Functionally the same.
+- Initial release. Functionally the same.
 
 ## 🔹 Key Features
 
-- Displays numbers on a **4-digit 7-segment LED display**
+- Displays numbers on a 4-digit 7-segment LED display
 - Built using:
-  - **74XX595** – shift register (serial data output)
-  - **74XX155** – 2-to-4 line decoder/demux
-- Controlled by an **ATmega328P**
+  - 74XX595 – shift register (serial data output)
+  - 74XX155 – 2-to-4 line decoder/demux
+- Controlled by an ATmega328P
 - Segment timing and animation handled in software
-- **Basic Power-On Self-Test (POST)** on startup
+- Basic Power-On Self-Test (POST) on startup
 - Tested with various counting logic
-- **ADC input** (with potentiometer) for interactive control or display testing
+- ADC input (with potentiometer) for interactive control or display testing
 
 ## 🔹 Design Notes
 
-- **RCLK (Pin 12)** of the 74LS595 is tied to **SRCLK (Pin 11)**, so outputs update automatically with each bit shifted in — useful for early animation tests.
+- RCLK (Pin 12) of the 74LS595 is tied to SRCLK (Pin 11), so outputs update automatically with each bit shifted in — useful for early animation tests.
 
-- Designed to **minimize microcontroller pin usage**:
+- Designed to minimize microcontroller pin usage:
   - Serial output via 74LS595 for segment data
   - Digit selection via 74LS155 demux
 
@@ -39,12 +39,18 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
 
 ## 🔹 General Usage
 
-- Performs a **Power-On Self-Test (POST)** to verify segment connections and logic IC behavior
-- Best used with a **regulated 5V** supply
+- Performs a Power-On Self-Test (POST) to verify segment connections and logic IC behavior
+- Best used with a regulated 5V supply
 
 ## 🔹 Considered Improvements
 
-- Break out **RCLK** from **SRCLK** for controlled output updates
-- Add **individual resistors** per LED segment for more consistent brightness
+- Break out RCLK from SRCLK for controlled output updates
+- Add individual resistors per LED segment for more consistent brightness
 - Extend character support beyond 0–9 and A–F (e.g., letters, symbols)
 - Logic to limit counting to prevent overflow or undefined patterns, so it doesn’t lose its digits ☺️
+
+##
+
+> Educational Use Notice: This project is provided for educational and learning purposes only. You are welcome to read, study, and experiment
+> with this software and/or hardware. It is not intended for commercial use. This software and/or hardware is provided "as is", without warranty
+> of any kind. The author assumes no responsibility for any damages or issues resulting from its use.
