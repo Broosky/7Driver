@@ -17,7 +17,7 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
 
 - Initial release.
 
-## 🔹 Key Features
+## 🔹 Features
 
 - Displays numbers on a 4-digit 7-segment LED display.
 - Built using:
@@ -25,7 +25,7 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
   - 74XX155 – 2-to-4 line decoder/demux.
 - Controlled by an ATmega328P.
 - Segment timing and animation handled in software.
-- Basic Power-On Self-Test (POST) on startup.
+- Performs a Power-On Self-Test (POST) to verify segment connections and logic IC behavior.
 - Tested with various counting logic.
 - ADC input (with potentiometer) for interactive control or display testing.
 
@@ -40,11 +40,6 @@ A 4-digit 7-segment LED display driver built on a Saturday years ago, using an A
 - Early versions featured:
   - Simple animations.
   - Shift speed control using an ADC-connected potentiometer.
-
-## 🔹 General Usage
-
-- Performs a Power-On Self-Test (POST) to verify segment connections and logic IC behavior.
-- Best used with a regulated 5V supply.
 
 ## 🔹 Considered Improvements
 
